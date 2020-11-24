@@ -1,27 +1,34 @@
 <div style="padding: 13px;">
-    <!-- <mat-spinner *ngIf="docs.length === 0"></mat-spinner> -->
-    <mat-spinner *ngIf="false"></mat-spinner>
+  <!-- <mat-spinner *ngIf="docs.length === 0"></mat-spinner> -->
+  <mat-spinner *ngIf="false"></mat-spinner>
 
-    <mat-card *ngFor="let doc of docs" style="margin-top:10px;">
-        <mat-card-header>
-            <mat-card-title>{{doc.document_name}}</mat-card-title>
-            <mat-card-subtitle>{{doc.created_at}}
-            </mat-card-subtitle>
-        </mat-card-header>
-        <!-- <mat-card-content>
+  <mat-card *ngFor="let doc of docs" style="margin-top:10px;">
+    <mat-card-header>
+      <mat-card-title>{{doc.document_name}}</mat-card-title>
+      <mat-card-subtitle>{{doc.created_at}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <!-- <mat-card-content>
             <p>
-                {{doc.description}}
+                {{doc.description}} -- in fact, some analysis summary should go here, but it needs more time to implement
             </p>
-            <img style="height:100%; width: 100%;" src="{{ product.imageUrl }}" />
         </mat-card-content> -->
-        <mat-card-actions>
+    <mat-card-actions>
       <button mat-button> Show details</button>
     </mat-card-actions>
-    </mat-card>
+  </mat-card>
 </div>
-<div>
-    <button (click) ="firstPage()" mat-button> First</button>
-    <button (click) ="previousPage()" mat-button> Previous</button>
-    <button (click) ="nextPage()" mat-button> Next</button>
-    <button (click) ="lastPage()" mat-button> Last</button>
+<div *ngIf="this.docs!=null">
+  <button (click)="firstPage()" mat-button> First</button>
+  <button (click)="previousPage()" mat-button> Previous</button>
+  <button (click)="nextPage()" mat-button> Next</button>
+  <button (click)="lastPage()" mat-button> Last</button>
+</div>
+<div *ngIf="this.docs==null">
+  <p>
+    It seems that the WS request is not working here.
+  </p>
+  <p>
+    Try to correct it to see the page working.
+  </p>
 </div>

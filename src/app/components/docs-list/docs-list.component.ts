@@ -25,19 +25,11 @@ export class DocsListComponent implements OnInit {
         this.docs = data.content;
     });
 
-
-    // this.docsService.getAll().subscribe(
-    //   (data: ContentSummary[]) => {
-    //     console.log(data);
-    //     this.docs = data.content;
-    // });
-
   }
 
   public firstPage() {
     // this.docs = [];
-    // this.docsService.sendGetRequestToUrl(this.docsService.first).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-    //   console.log(res);
+    // this.docsService.sendGetRequestToUrl(this.docsService.first).pipe().subscribe((res: HttpResponse<any>) => {
     //   this.docs = res.body;
     // })
   }
@@ -45,8 +37,7 @@ export class DocsListComponent implements OnInit {
 
     // if (this.docsService.prev !== undefined && this.docsService.prev !== '') {
     //   this.docs = [];
-    //   this.docsService.sendGetRequestToUrl(this.docsService.prev).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-    //     console.log(res);
+    //   this.docsService.sendGetRequestToUrl(this.docsService.prev).pipe().subscribe((res: HttpResponse<any>) => {
     //     this.docs = res.body;
     //   })
     // }
@@ -55,16 +46,14 @@ export class DocsListComponent implements OnInit {
   public nextPage() {
     // if (this.docsService.next !== undefined && this.docsService.next !== '') {
     //   this.docs = [];
-    //   this.docsService.sendGetRequestToUrl(this.docsService.next).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-    //     console.log(res);
+    //   this.docsService.sendGetRequestToUrl(this.docsService.next).pipe().subscribe((res: HttpResponse<any>) => {
     //     this.docs = res.body;
     //   })
     // }
   }
   public lastPage() {
     // this.docs = [];
-    // this.docsService.sendGetRequestToUrl(this.docsService.last).pipe(takeUntil(this.destroy$)).subscribe((res: HttpResponse<any>) => {
-    //   console.log(res);
+    // this.docsService.sendGetRequestToUrl(this.docsService.last).pipe().subscribe((res: HttpResponse<any>) => {
     //   this.docs = res.body;
     // })
   }

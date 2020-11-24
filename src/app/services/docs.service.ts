@@ -4,9 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
 const baseUrl = 'http://localhost:8080/expertai/api/contents';
-const httpHeaders: HttpHeaders = new HttpHeaders({
-  'Access-Control-Allow-Origin': 'http://localhost:8080'
-});
 @Injectable({
   providedIn: 'root'
 })
@@ -20,31 +17,35 @@ export class DocsService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get(`${baseUrl}/all`, { headers: httpHeaders });
+    return this.http.get(`${baseUrl}/all`);
   }
 
   get(id): Observable<any> {
-    return this.http.get(`${baseUrl}/${id}`, { headers: httpHeaders });
+    return this.http.get(`${baseUrl}/${id}`);
   }
 
+  // should we?
   // create(data): Observable<any> {
   //   return this.http.post(baseUrl, data);
   // }
 
+  // could be...
   // update(id, data): Observable<any> {
   //   return this.http.put(`${baseUrl}/${id}`, data);
   // }
 
+  // hm...
   // delete(id): Observable<any> {
   //   return this.http.delete(`${baseUrl}/${id}`);
   // }
 
+  // OMG!
   // deleteAll(): Observable<any> {
   //   return this.http.delete(baseUrl);
   // }
 
   findById(id): Observable<any> {
-    return this.http.get(`${baseUrl}/${id}`, { headers: httpHeaders }).pipe(catchError(this.handleError), tap(
+    return this.http.get(`${baseUrl}/${id}`).pipe(catchError(this.handleError), tap(
       res => {
         console.log(res);
         console.log(res.headers.get('Link'));
@@ -65,6 +66,7 @@ export class DocsService {
     return throwError(errorMessage);
   }
 
+  // should be used when BE will start sending us the links section
   parseLinkHeader(header) {
     if (header.length === 0) {
       return;
@@ -86,11 +88,4 @@ export class DocsService {
     this.next = links['next'];
   }
 
-  // public sendGetRequestToUrl(url: string){
-  //   return this.http.get(url, { observe: "response"}).pipe(retry(3), catchError(this.handleError), tap(res => {
-  //     console.log(res.headers.get('Link'));
-  //     this.parseLinkHeader(res.headers.get('Link'));
-
-  //   }));
-  // }
 }
