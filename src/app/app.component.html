@@ -1,10 +1,11 @@
-Init page
+<mat-toolbar color="primary">
+  <h1>
+    Expert Ai Demo
+  </h1>
+  <button mat-button routerLink="/">Home</button>
+  <button mat-button routerLink="/docs">Documents</button>
+  <button mat-button routerLink="/docstab">Documents Table</button>
 
-<div>
-  <button id="btnReturn" type="button" class="btn btn-outline-primary btn mb-3" (click)="goToDocsList()">
-    Go to the documents list
-    <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i></button>
-
-</div>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
